@@ -50,6 +50,18 @@ Static libvisual library.
 %description static -l pl
 Statyczna biblioteka libvisual.
 
+%package tools
+Summary:	Utilities for libvisual library
+Summary(pl):	Narzêdzia dla biblioteki libvisual
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description tools
+Utilities for libvisual library.
+
+%description static -l pl
+Narzêdzia dla biblioteki libvisual.
+
 %prep
 %setup -q -n %{name}
 %patch0 -p1
@@ -61,7 +73,9 @@ Statyczna biblioteka libvisual.
 %{__automake}
 %configure \
 	--enable-static
-%{__make}
+cp -f lvconfig.h libvisual
+%{__make} \
+	LDFLAGS="%{rpmldflags} -L../libvisual"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -90,3 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files tools
+%defattr(644,root,root,755)
+%{_bindir}/*
