@@ -1,14 +1,12 @@
 Summary:	Abstraction library that comes between applications and audio visualisation plugins
 Summary(pl):	Abstrakcyjna biblioteka pomiêdzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
-Version:	0.1.6
-Release:	2
+Version:	0.1.7
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	2b71b1c82b8a8bb36a79fbaf166ec430
-Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-automake.patch
+# Source0-md5:	29976f5f10b36fa2346294dcb2280d19
 URL:		http://libvisual.sourceforge.net/
 Buildrequires:	SDL-devel >= 1.2.0
 BuildRequires:	autoconf
@@ -63,8 +61,6 @@ Statyczna biblioteka libvisual.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
