@@ -1,0 +1,11 @@
+--- libvisual/lv_cpu.c~	2005-02-09 20:20:12.000000000 +0100
++++ libvisual/lv_cpu.c	2005-02-15 00:11:48.053376328 +0100
+@@ -423,7 +423,7 @@
+ #endif
+ #endif /* VISUAL_ARCH_X86 */
+ 
+-#if VISUAL_ARCH_POWERPC
++#if defined(VISUAL_ARCH_POWERPC)
+ 	check_os_altivec_support ();
+ #endif /* VISUAL_ARCH_POWERPC */
+ 
