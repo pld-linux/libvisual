@@ -8,7 +8,7 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	2b71b1c82b8a8bb36a79fbaf166ec430
 Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-libvisual.patch
+Patch1:		%{name}-automake.patch
 URL:		http://libvisual.sourceforge.net/
 Buildrequires:	SDL-devel >= 1.2.0
 BuildRequires:	autoconf
