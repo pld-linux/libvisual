@@ -1,12 +1,12 @@
 Summary:	Abstraction library that comes between applications and audio visualisation plugins
 Summary(pl):	Abstrakcyjna biblioteka pomiêdzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
-Version:	0.1.5
+Version:	0.1.6
 Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	1f8690025d246ad26dd33c66ee9281fc
+# Source0-md5:	2b71b1c82b8a8bb36a79fbaf166ec430
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://libvisual.sourceforge.net/
 Buildrequires:	SDL-devel >= 1.2.0
@@ -48,6 +48,18 @@ Static libvisual library.
 %description static -l pl
 Statyczna biblioteka libvisual.
 
+#%package tools
+#Summary:	Utilities for libvisual library
+#Summary(pl):	Narzêdzia dla biblioteki libvisual
+#Group:		Development/Libraries
+#Requires:	%{name}-devel = %{version}-%{release}
+#
+#%description tools
+#Utilities for libvisual library.
+#
+#%description static -l pl
+#Narzêdzia dla biblioteki libvisual.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -59,13 +71,20 @@ Statyczna biblioteka libvisual.
 %{__automake}
 %configure \
 	--enable-static
-%{__make}
+#cp -f lvconfig.h libvisual
+%{__make} \
+	LDFLAGS="%{rpmldflags} -L../libvisual"
+
+#%{__make} -C tools \
+#	LDFLAGS="%{rpmldflags} -L../libvisual"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+#%{__make} -C tools install \
+#	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,8 +102,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/%{name}
+#%{_includedir}/*.h
 %{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+#%files tools
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/*
