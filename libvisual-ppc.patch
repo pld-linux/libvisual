@@ -1,5 +1,6 @@
+diff -Nur libvisual-0.2.0.org/libvisual/lv_cpu.c libvisual-0.2.0/libvisual/lv_cpu.c
 --- libvisual-0.2.0.org/libvisual/lv_cpu.c      2005-02-09 19:20:12.000000000 +0000
-+++ libvisual-0.2.0/libvisual/lv_cpu.c  2005-02-14 22:22:15.940974136 +0000
++++ libvisual-0.2.0/libvisual/lv_cpu.c  2005-02-14 22:41:24.466371736 +0000
 @@ -154,21 +154,7 @@
  #else /* !VISUAL_OS_DARWIN */
         /* no Darwin, do it the brute-force way */
@@ -19,7 +20,7 @@
 -               signal (SIGILL, SIG_DFL);
 -               _lv_cpu_caps.hasAltiVec = 1;
 -       }
-+       _lv_cpu_caps.hasAltiVec = 0;
++       _lv_cpu_caps.hasAltiVec = 1;
  #endif
  }
  #endif
@@ -31,4 +32,4 @@
 +#if defined(VISUAL_ARCH_POWERPC)
         check_os_altivec_support ();
  #endif /* VISUAL_ARCH_POWERPC */
- 
+
