@@ -7,7 +7,7 @@ Release:	0.%{snap}.1
 License:	GPL
 Group:		Libraries
 Source0:	%{name}-%{version}.%{snap}.tar.gz
-# Source0-md5:	588149789b6a2da12108daa090e8ef29
+# Source0-md5:	588149789b6a2da12108daa090e8ef29 
 URL:		http://libvisual.sourceforge.net/
 Buildrequires:	SDL-devel >= 1.2.0
 BuildRequires:	autoconf
