@@ -1,4 +1,4 @@
-bvisual-0.2.0.org/libvisual/lv_cpu.c      2005-02-09 19:20:12.000000000 +0000
+--- libvisual-0.2.0.org/libvisual/lv_cpu.c      2005-02-09 19:20:12.000000000 +0000
 +++ libvisual-0.2.0/libvisual/lv_cpu.c  2005-02-14 22:22:15.940974136 +0000
 @@ -154,21 +154,7 @@
  #else /* !VISUAL_OS_DARWIN */
