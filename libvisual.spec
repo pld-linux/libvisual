@@ -63,7 +63,7 @@ Statyczna biblioteka libvisual.
 %prep
 %setup -q
 %ifarch ppc ppc64
-%patch0 -p0
+%patch0 -p1
 %endif
 
 %build
