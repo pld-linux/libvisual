@@ -1,0 +1,19 @@
+--- libvisual-0.2.0/libvisual/Makefile.am.orig	2005-01-25 20:58:14.000000000 +0100
++++ libvisual-0.2.0/libvisual/Makefile.am	2005-03-20 17:16:07.237749296 +0100
+@@ -16,8 +16,6 @@
+ 
+ DEFS = @DEFS@
+ 
+-LIBS += -L. -L$(libdir)
+-
+ PLUGPATH = $(libdir)/libvisual
+ 
+ AM_CFLAGS = -DPLUGPATH="\"@LIBVISUAL_PLUGINS_BASE_DIR@\""
+@@ -26,6 +24,7 @@
+ 	   -I$(top_builddir) -I$(top_builddir)/libvisual
+ 
+ libvisual_la_LDFLAGS = -export-dynamic -no-undefined
++libvisual_la_LIBADD = -lpthread
+ 
+ libvisual_la_SOURCES = lv_actor.c lv_input.c lv_event.c \
+ 		       lv_bin.c lv_plugin.c lv_video.c lv_video_mmx.c lv_mem.c \
