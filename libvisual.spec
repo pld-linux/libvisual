@@ -1,4 +1,4 @@
-%define		_snap 040803
+%define		_snap 040827
 Summary:	Abstraction library that comes between applications and audio visualisation plugins
 Summary(pl):	Abstrakcyjna biblioteka pomiêdzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
@@ -8,7 +8,7 @@ License:	GPL
 Group:		Libraries
 #Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source0:	%{name}-%{_snap}.tar.bz2
-# Source0-md5:	acaccf7e30f2dad3b944f37757404e5d
+# Source0-md5:	2648abd7bd2907f4a790547433ce865c
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://libvisual.sourceforge.net/
 Buildrequires:	SDL-devel >= 1.2.0
@@ -73,14 +73,19 @@ Narzêdzia dla biblioteki libvisual.
 %{__automake}
 %configure \
 	--enable-static
-cp -f lvconfig.h libvisual
+#cp -f lvconfig.h libvisual
 %{__make} \
+	LDFLAGS="%{rpmldflags} -L../libvisual"
+
+%{__make} -C tools \
 	LDFLAGS="%{rpmldflags} -L../libvisual"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+%{__make} -C tools install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
@@ -99,7 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/%{name}
-%{_includedir}/*.h
+#%{_includedir}/*.h
 %{_pkgconfigdir}/*.pc
 
 %files static
