@@ -5,7 +5,7 @@ Version:	0.1.7
 Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/libvisual/%{name}-%{version}.tar.gz
 # Source0-md5:	29976f5f10b36fa2346294dcb2280d19
 URL:		http://libvisual.sourceforge.net/
 Buildrequires:	SDL-devel >= 1.2.0
