@@ -2,16 +2,17 @@ Summary:	Abstraction library that comes between applications and audio visualisa
 Summary(pl):	Abstrakcyjna biblioteka pomiêdzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
 Version:	0.2.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libvisual/%{name}-%{version}.tar.gz
 # Source0-md5:	668236dcbd252c70f1beff551f36b8b3
 URL:		http://libvisual.sourceforge.net/
 Patch0:		%{name}-ppc.patch
-Buildrequires:	SDL-devel >= 1.2.0
-BuildRequires:	autoconf
-BuildRequires:	automake
+Patch1:		%{name}-link.patch
+#Buildrequires:	SDL-devel >= 1.2.0
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake >= 1:1.7
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.14
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,6 +66,7 @@ Statyczna biblioteka libvisual.
 %ifarch ppc ppc64
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -74,8 +76,7 @@ Statyczna biblioteka libvisual.
 %configure \
 	--enable-static
 #cp -f lvconfig.h libvisual
-%{__make} \
-	LDFLAGS="%{rpmldflags} -L../libvisual"
+%{__make}
 
 #%{__make} -C tools \
 #	LDFLAGS="%{rpmldflags} -L../libvisual"
