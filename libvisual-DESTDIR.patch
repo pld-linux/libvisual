@@ -1,14 +1,13 @@
-diff -urN aa/libvisual-0.1.5/Makefile.am libvisual-0.1.5/Makefile.am
---- aa/libvisual-0.1.5/Makefile.am	2004-06-27 19:07:28.000000000 +0200
-+++ libvisual-0.1.5/Makefile.am	2004-08-03 00:14:57.632598824 +0200
+--- libvisual/Makefile.am.orig	2004-08-26 00:05:51.000000000 +0200
++++ libvisual/Makefile.am	2004-08-27 16:00:59.260539832 +0200
 @@ -6,8 +6,8 @@
  pkgconfig_DATA = libvisual.pc
  
- install-exec-local: lvconfig.h 
+ install-exec-local: libvisual/lvconfig.h 
 -	        $(mkinstalldirs) $(prefix)/include/libvisual
 -	        file=$(prefix)/include/libvisual/lvconfig.h; \
 +	        $(mkinstalldirs) $(DESTDIR)$(prefix)/include/libvisual
 +	        file=$(DESTDIR)$(prefix)/include/libvisual/lvconfig.h; \
- 	        if test -r $$file && cmp -s lvconfig.h $$file; then :; \
- 	        else $(INSTALL_DATA) lvconfig.h $$file; fi
+ 	        if test -r $$file && cmp -s libvisual/lvconfig.h $$file; then :; \
+ 	        else $(INSTALL_DATA) libvisual/lvconfig.h $$file; fi
  
