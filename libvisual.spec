@@ -8,6 +8,7 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/libvisual/%{name}-%{version}.tar.gz
 # Source0-md5:	668236dcbd252c70f1beff551f36b8b3
 URL:		http://libvisual.sourceforge.net/
+Patch0:		%{name}-ppc.patch
 Buildrequires:	SDL-devel >= 1.2.0
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -61,6 +62,9 @@ Statyczna biblioteka libvisual.
 
 %prep
 %setup -q
+%ifarch ppc ppc64
+%patch0 -p0
+%endif
 
 %build
 %{__libtoolize}
