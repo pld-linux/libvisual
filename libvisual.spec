@@ -1,12 +1,14 @@
+%define		_snap 040803
 Summary:	Abstraction library that comes between applications and audio visualisation plugins
 Summary(pl):	Abstrakcyjna biblioteka pomiêdzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
-Version:	0.1.5
-Release:	1
+Version:	0.1.6
+Release:	0.%{_snap}.1
 License:	GPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	1f8690025d246ad26dd33c66ee9281fc
+#Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	%{name}-%{_snap}.tar.bz2
+# Source0-md5:	acaccf7e30f2dad3b944f37757404e5d
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://libvisual.sourceforge.net/
 Buildrequires:	SDL-devel >= 1.2.0
@@ -49,7 +51,7 @@ Static libvisual library.
 Statyczna biblioteka libvisual.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1
 
 %build
