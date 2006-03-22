@@ -13,6 +13,7 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.14
+Obsoletes:	libvisual-tools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
