@@ -8,8 +8,7 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
 # Source0-md5:	d0f987abd0845e725743605fd39ef73f
 URL:		http://libvisual.sourceforge.net/
-Patch0:		%{name}-ppc.patch
-Patch1:		%{name}-link.patch
+Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	libtool
@@ -50,11 +49,7 @@ Statyczna biblioteka libvisual.
 
 %prep
 %setup -q
-%ifarch ppc ppc64
-# XXX: is it needed anyway?
 %patch0 -p1
-%endif
-%patch1 -p1
 
 %build
 %{__libtoolize}
