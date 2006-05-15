@@ -2,13 +2,14 @@ Summary:	Abstraction library that comes between applications and audio visualisa
 Summary(pl):	Abstrakcyjna biblioteka pomiêdzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
 Version:	0.4.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
 # Source0-md5:	d0f987abd0845e725743605fd39ef73f
 URL:		http://libvisual.sourceforge.net/
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-ppc.patch
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	libtool
@@ -51,6 +52,9 @@ Statyczna biblioteka libvisual.
 %prep
 %setup -q
 %patch0 -p1
+%ifarch ppc ppc64
+%patch1 -p1
+%endif
 
 %build
 %{__libtoolize}
