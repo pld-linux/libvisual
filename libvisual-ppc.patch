@@ -6,10 +6,10 @@ diff -Nur libvisual-0.2.0.org/libvisual/lv_cpu.c libvisual-0.2.0/libvisual/lv_cp
  	/* no Darwin, do it the brute-force way */
  	/* this is borrowed from the libmpeg2 library */
 -	signal (SIGILL, sigill_handler);
--	if (sigsetjmp (_lv_powerpc_jmpbuf, 1)) {
+-	if (sigsetjmp (__lv_powerpc_jmpbuf, 1)) {
 -		signal (SIGILL, SIG_DFL);
 -	} else {
--		_lv_powerpc_canjump = 1;
+-		__lv_powerpc_canjump = 1;
 -
 -		asm volatile
 -			("mtspr 256, %0\n\t"
@@ -18,18 +18,9 @@ diff -Nur libvisual-0.2.0.org/libvisual/lv_cpu.c libvisual-0.2.0/libvisual/lv_cp
 -			 : "r" (-1));
 -
 -		signal (SIGILL, SIG_DFL);
--		_lv_cpu_caps.hasAltiVec = 1;
+-		__lv_cpu_caps.hasAltiVec = 1;
 -	}
-+	_lv_cpu_caps.hasAltiVec = 1;
++	__lv_cpu_caps.hasAltiVec = 1;
  #endif
  }
  #endif
-@@ -423,7 +409,7 @@
- #endif
- #endif /* VISUAL_ARCH_X86 */
- 
--#if VISUAL_ARCH_POWERPC
-+#if defined(VISUAL_ARCH_POWERPC)
- 	check_os_altivec_support ();
- #endif /* VISUAL_ARCH_POWERPC */
- 
