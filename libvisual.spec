@@ -2,7 +2,7 @@ Summary:	Abstraction library that comes between applications and audio visualisa
 Summary(pl):	Abstrakcyjna biblioteka pomiêdzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
 Version:	0.4.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
@@ -51,6 +51,10 @@ Statyczna biblioteka libvisual.
 %prep
 %setup -q
 %patch0 -p1
+
+mv -f po/{es_ES,es}.po
+rm -f po/{es_AR.po,stamp-po}
+sed -i -e 's|es_ES es_AR|es|' po/LINGUAS
 
 %build
 %{__libtoolize}
