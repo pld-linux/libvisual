@@ -53,6 +53,7 @@ Statyczna biblioteka libvisual.
 %patch0 -p1
 
 mv -f po/{es_ES,es}.po
+# es_AR is a copy of es
 rm -f po/{es_AR.po,stamp-po}
 sed -i -e 's|es_ES es_AR|es|' po/LINGUAS
 
