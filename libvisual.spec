@@ -7,7 +7,7 @@ License:	GPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
 # Source0-md5:	d0f987abd0845e725743605fd39ef73f
-URL:		http://libvisual.sourceforge.net/
+URL:		http://localhost.nl/~synap/libvisual/
 Patch0:		%{name}-link.patch
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
