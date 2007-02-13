@@ -1,5 +1,5 @@
 Summary:	Abstraction library that comes between applications and audio visualisation plugins
-Summary(pl.UTF-8):   Abstrakcyjna biblioteka pomiędzy aplikacjami a wtyczkami wizualizacji audio
+Summary(pl.UTF-8):	Abstrakcyjna biblioteka pomiędzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
 Version:	0.4.0
 Release:	2
@@ -26,7 +26,7 @@ audio.
 
 %package devel
 Summary:	Header files for libvisual library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libvisual
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libvisual
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -38,7 +38,7 @@ Pliki nagłówkowe biblioteki libvisual.
 
 %package static
 Summary:	Static libvisual library
-Summary(pl.UTF-8):   Statyczna biblioteka libvisual
+Summary(pl.UTF-8):	Statyczna biblioteka libvisual
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
