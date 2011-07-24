@@ -2,15 +2,19 @@ Summary:	Abstraction library that comes between applications and audio visualisa
 Summary(pl.UTF-8):	Abstrakcyjna biblioteka pomiędzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
 Version:	0.4.0
-Release:	5
-License:	GPL
+Release:	6
+License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
 # Source0-md5:	d0f987abd0845e725743605fd39ef73f
 URL:		http://localhost.nl/~synap/libvisual/
 Patch0:		%{name}-link.patch
+BuildRequires:	autoconf >= 2.57
+BuildRequires:	automake >= 1:1.7
+BuildRequires:	gettext-devel >= 0.14.1
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.14
+BuildRequires:	sed >= 4.0
 Obsoletes:	libvisual-tools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,10 +56,18 @@ Statyczna biblioteka libvisual.
 
 mv -f po/{es_ES,es}.po
 # es_AR is a copy of es
-rm -f po/{es_AR.po,stamp-po}
+%{__rm} po/{es_AR.po,stamp-po}
 sed -i -e 's|es_ES es_AR|es|' po/LINGUAS
+# hack for newer gettext
+sed -i -e 's/DOMAIN = .*/DOMAIN = libvisual-0.4/' po/Makevars
 
 %build
+%{__gettextize}
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--enable-static
 %{__make}
@@ -78,16 +90,17 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}-0.4.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO
+%attr(755,root,root) %{_libdir}/libvisual-0.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libvisual-0.4.so.0
 %dir %{_libdir}/libvisual-0.4
-%attr(755,root,root) %{_libdir}/libvisual-*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libvisual-*.so
-%{_libdir}/libvisual-*.la
-%{_includedir}/libvisual-*
-%{_pkgconfigdir}/*.pc
+%attr(755,root,root) %{_libdir}/libvisual-0.4.so
+%{_libdir}/libvisual-0.4.la
+%{_includedir}/libvisual-0.4
+%{_pkgconfigdir}/libvisual-0.4.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libvisual-*.a
+%{_libdir}/libvisual-0.4.a
