@@ -1,0 +1,28 @@
+--- libvisual-0.4.0/libvisual/lv_defines.h.orig	2006-01-22 14:23:37.000000000 +0100
++++ libvisual-0.4.0/libvisual/lv_defines.h	2011-12-29 08:07:41.950191623 +0100
+@@ -24,6 +24,9 @@
+ #ifndef _LV_DEFINES_H
+ #define _LV_DEFINES_H
+ 
++/* get NULL definition */
++#include <stdlib.h>
++
+ #ifdef __cplusplus
+ # define VISUAL_C_LINKAGE extern "C"
+ #else
+@@ -38,15 +41,6 @@
+ # define VISUAL_END_DECLS
+ #endif /* __cplusplus */
+ 
+-#ifdef NULL
+-#undef NULL
+-#endif
+-
+-/**
+- * NULL define.
+- */
+-#define NULL	((void *) 0)
+-
+ #ifndef FALSE
+ /**
+  * FALSE define.
