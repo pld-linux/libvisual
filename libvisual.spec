@@ -14,7 +14,7 @@ Patch1:		%{name}-NULL.patch
 URL:		http://libvisual.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
-BuildRequires:	gettext-devel >= 0.14.1
+BuildRequires:	gettext-tools >= 0.14.1
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.14
 BuildRequires:	sed >= 4.0
