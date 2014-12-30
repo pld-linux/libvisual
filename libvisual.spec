@@ -9,6 +9,7 @@ Source0:	http://downloads.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
 # Source0-md5:	d0f987abd0845e725743605fd39ef73f
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-NULL.patch
+Patch2:		format-security.patch
 # original URL is defunct; use sf
 #URL:		http://localhost.nl/~synap/libvisual/
 URL:		http://libvisual.sourceforge.net/
@@ -57,6 +58,7 @@ Statyczna biblioteka libvisual.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 mv -f po/{es_ES,es}.po
 # es_AR is a copy of es
