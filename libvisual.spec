@@ -10,9 +10,7 @@ Source0:	http://downloads.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-NULL.patch
 Patch2:		format-security.patch
-# original URL is defunct; use sf
-#URL:		http://localhost.nl/~synap/libvisual/
-URL:		http://libvisual.sourceforge.net/
+URL:		http://libvisual.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-tools >= 0.14.1
@@ -60,7 +58,7 @@ Statyczna biblioteka libvisual.
 %patch1 -p1
 %patch2 -p1
 
-mv -f po/{es_ES,es}.po
+%{__mv} po/{es_ES,es}.po
 # es_AR is a copy of es
 %{__rm} po/{es_AR.po,stamp-po}
 sed -i -e 's|es_ES es_AR|es|' po/LINGUAS
