@@ -1,23 +1,21 @@
 Summary:	Abstraction library that comes between applications and audio visualisation plugins
 Summary(pl.UTF-8):	Abstrakcyjna biblioteka pomiędzy aplikacjami a wtyczkami wizualizacji audio
 Name:		libvisual
-Version:	0.4.0
-Release:	8
+Version:	0.4.1
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
-# Source0-md5:	d0f987abd0845e725743605fd39ef73f
+Source0:	https://downloads.sourceforge.net/libvisual/%{name}-%{version}.tar.bz2
+# Source0-md5:	7ad5a74317337d91e87c905fd5d8013e
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-NULL.patch
-Patch2:		format-security.patch
 URL:		http://libvisual.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake >= 1:1.7
-BuildRequires:	gettext-tools >= 0.14.1
+BuildRequires:	gettext-tools >= 0.19
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.14
-BuildRequires:	sed >= 4.0
-Obsoletes:	libvisual-tools
+Obsoletes:	libvisual-tools < 0.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,14 +54,6 @@ Statyczna biblioteka libvisual.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-
-%{__mv} po/{es_ES,es}.po
-# es_AR is a copy of es
-%{__rm} po/{es_AR.po,stamp-po}
-sed -i -e 's|es_ES es_AR|es|' po/LINGUAS
-# hack for newer gettext
-sed -i -e 's/DOMAIN = .*/DOMAIN = libvisual-0.4/' po/Makevars
 
 %build
 %{__gettextize}
@@ -83,6 +73,11 @@ install -d $RPM_BUILD_ROOT%{_libdir}/libvisual-0.4
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libvisual-0.4.la
+
+# unify
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{es_ES,es}
+
 %find_lang %{name}-0.4
 
 %clean
@@ -101,7 +96,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libvisual-0.4.so
-%{_libdir}/libvisual-0.4.la
 %{_includedir}/libvisual-0.4
 %{_pkgconfigdir}/libvisual-0.4.pc
 
