@@ -17,6 +17,7 @@ Patch1:		%{name}-NULL.patch
 URL:		http://libvisual.org/
 BuildRequires:	SDL-devel >= 1.2.0
 BuildRequires:	autoconf >= 2.57
+BuildRequires:	autoconf-archive
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	gettext-tools >= 0.19
 BuildRequires:	libstdc++-devel >= 6:4.7
