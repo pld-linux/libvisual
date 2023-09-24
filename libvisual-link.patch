@@ -1,6 +1,6 @@
---- libvisual-0.4.0/libvisual/Makefile.am.orig	2006-02-20 09:20:58.000000000 +0100
-+++ libvisual-0.4.0/libvisual/Makefile.am	2006-03-22 19:25:47.953499500 +0100
-@@ -19,8 +19,6 @@
+--- libvisual-0.4.2/libvisual/Makefile.am.orig	2023-03-20 03:04:17.000000000 +0100
++++ libvisual-0.4.2/libvisual/Makefile.am	2023-09-24 13:23:22.682294890 +0200
+@@ -19,8 +19,6 @@ lib_LTLIBRARIES = libvisual-@LIBVISUAL_V
  
  DEFS = @DEFS@
  
@@ -9,8 +9,8 @@
  PLUGPATH = $(libdir)/libvisual
  
  AM_CFLAGS = -DPLUGPATH="\"$(LIBVISUAL_PLUGINS_BASE_DIR)\"" \
-@@ -30,6 +28,7 @@
- 	   -I$(top_builddir) -I$(top_builddir)/libvisual
+@@ -30,6 +28,7 @@ AM_CPPFLAGS = -I$(top_srcdir) -I$(top_sr
+ 	-I$(top_builddir) -I$(top_builddir)/libvisual
  
  libvisual_@LIBVISUAL_VERSION_SUFFIX@_la_LDFLAGS = -export-dynamic -no-undefined
 +libvisual_@LIBVISUAL_VERSION_SUFFIX@_la_LIBADD = $(LV_THREAD_LIBS) @LTLIBINTL@
